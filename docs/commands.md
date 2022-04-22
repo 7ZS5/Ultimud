@@ -1,5 +1,3 @@
-# Commands:
-
 ## System:
 - help: List the help menu and help commands.
 - cmds: Lists all game commands.
