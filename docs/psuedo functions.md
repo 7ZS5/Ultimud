@@ -1,6 +1,5 @@
-# Psuedo Functions
 - user command input
-- user join game
+- user join game/leave game
 - move
 - say
 - room event to output
@@ -10,12 +9,11 @@
 - consume item
 - use item on object
 - destroy item
-- trade item
+- buy item, sell item
 - examine item
-- invite to group, disband group, give group leadership, leave group,
-- invite to guild, disband guild, give guild leadership, leave guild, 
-- request duel, request trade 
-- move to room
+- invite to group, disband group, give group leadership, leave group
+- invite to guild, disband guild, give guild leadership, leave guild
+- request duel, request trade
 - talk to npc
 - trade with npc
 - accept npc quest
