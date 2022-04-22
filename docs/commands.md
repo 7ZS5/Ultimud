@@ -7,8 +7,8 @@
 ## Combat:
 - attack or atk: For engaging in battle with a monster, or an npc.
 - flee: For escaping from an enemy in battle. Some enemies cannot be escaped, though.
-- skill + (skill number) + (target, self, object): To use a skill on an object, target, or self.
-- spell + (spell number) + (target, self, object): To use a spell on an object, target, or self.
+- (skill name) + (target/self/object): To use a skill on an object, target, or self.
+- (spell name) + (target/self/object): To use a spell on an object, target, or self.
 
 ## Actions:
 - move + (number): The available rooms will be listed with index.
