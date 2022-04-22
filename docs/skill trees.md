@@ -1,5 +1,3 @@
-# Skill Trees
-
 ## Magic
 
 ### dark magic:
