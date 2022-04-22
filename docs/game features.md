@@ -1,8 +1,10 @@
-# Game Features:
-
-- calendar, time, night/day cycle, world events
+- calendar, time, night/day cycle
+- world events
 - players groups and guilds
+- player mounts
+- player housing
 - battles with multiple enemies and players
 - RPG game aspects such as leveling, inventory, skills & magic
 - dynamic, free-form character development
 - crafting
+- dialogue trees
