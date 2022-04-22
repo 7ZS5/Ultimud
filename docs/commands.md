@@ -1,5 +1,9 @@
 # Commands:
 
+## System:
+- help: List the help menu and help commands.
+- cmds: Lists all game commands.
+
 ## Combat:
 - attack or atk: For engaging in battle with a monster, or an npc.
 - flee: For escaping from an enemy in battle. Some enemies cannot be escaped, though.
@@ -32,7 +36,3 @@
 - hail + (target): Sends a simple "Hail, (target)!" to the instance chat.
 - yes: To answer yes
 - no: To answer no
-
-# System:
-- help: List the help menu and help commands.
-- cmds: Lists all game commands.
