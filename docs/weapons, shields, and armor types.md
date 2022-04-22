@@ -1,5 +1,3 @@
-# Weapons, Shield, and Armor Types
-
 ## Weapons:
 
 - two-handed sword (hack)
