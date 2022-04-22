@@ -1,4 +1,3 @@
-# Developer Concepts:
 ## General:
 - browser based
 - made with html/css/javascript
