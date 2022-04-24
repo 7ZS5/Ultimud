@@ -1,3 +1,3 @@
 # Ultimud
 
-A browser-based text-based multiplayer RPG made with html/css/javascript.
+A browser-based text-based multiplayer RPG made with html/css/javascript for the front-end and PHP/SQL for the backend. Once the mud development is finished it will be hosted on https://www.thirdhosting.com/.
