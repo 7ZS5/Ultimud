@@ -1,1 +1,2 @@
 - Graphical icons to represent items, magic types, enemy types, and other objects in the game
+- Customize chat text colors: player names, emoji/actions, ambiance, system messages, objects, paths
