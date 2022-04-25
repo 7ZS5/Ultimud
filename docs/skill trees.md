@@ -44,7 +44,7 @@
 
 ## Combat
 
-### war and tactics:
+### tactics:
 - precision strike:
 - rally:
 
