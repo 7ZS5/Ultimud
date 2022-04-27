@@ -1,9 +1,9 @@
-<!--currently working on line 208: checking if userinput is an integer-->
-<!--abbreviations legend at the bottom of this file-->
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Legend & Myth</title>
+<html lang="en">
+
+<head>
+    <title>Legend and Myth</title>
+
 <!--
 //     _____  _____ _____    _____          _      
 //    / ____|/ ____/ ____|  / ____|        | |     
@@ -13,129 +13,128 @@
 //    \_____|_____/_____/   \_____\___/ \__,_|\___|
 //                                                 
 //                 
- -->
-        <style>
-            #main{
-                background-image: linear-gradient(grey, black);
-                display: flex;
-                position: fixed;
-                justify-content: center;
-                align-items: center;
-                left: 0px;
-                top: 0px;
-                width: 100%;
-                height: 100%;
-            }
+-->
 
-            #banner{
-                background-image: radial-gradient(grey, black);
-                position: fixed;
-                top: 0px;
-                left: 0px;
-                color: rgb(0, 255, 0);
-                font-size: 40px;
-                text-align: center;
-                width: 100%;
-            }
+    <style>
+        #main{
+            background-image: linear-gradient(grey, black);
+            display: flex;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+        }
 
-            #game{
-                background-color: grey;
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-                width: 100%;
-                max-width: 700px;
-                max-height: 700px;
-            }
+        #banner{
+            background-image: linear-gradient(green, black);
+            display: flex;
+            position: fixed;
+            width: 100%;
+            height: 30px;
+            left: 0px;
+            top: 0px;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+        }
 
-            #info{
-                background-color: grey;
-                display: flex;
-                flex-direction: row;
-                height: 200px;
-                box-sizing: border-box;
-                border: 1px solid black;
-            }
+        #body{
+            background-color: rgb(39, 39, 39);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            width: 700px;
+            box-sizing: border-box;
+            border: 1px solid grey;
+        }
 
-            #active{
-                display: flex;
-                height: 100%;
-                box-sizing: border-box;
-                border: 1px solid black;
-            }
+        #welcome{
+            font-size: 40px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(blue, black);
+        }
 
-            #room{
-                display: flex;
-                flex-direction: row;
-                height: 100%;
-            }
+        #info{
+            display: none;
+            max-height: 80px;
+        }
 
-            #paths{
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-            }
+        #room{
+            display: none;
+        }
+        
+        #battle{
+            display: none;
+        }
 
-            #objects{}
-            #players{}
-            #enemies{}
+        #dialogue{
+            display: none;
+        }
 
-            #io{
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-                box-sizing: border-box;
-                border: 1px solid black;
-            }
-            
-            #output{
-                background-color: rgb(35, 35, 35);
-                height: 100%;
-                max-height: 286px;
-                color: white;
-                border: 1px solid grey;
-                word-wrap: break-word;
-                overflow-y: auto;
-            }
+        #store{
+            display: none;
+        }
 
-            #input{
-                background-color: rgb(35, 35, 35);
-                color: white;
-                border: 1px solid grey;
-                font-size: 18px;
-            }
+        #output{
+            color: white;
+        }
 
-            #info1{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-            }
+        #input{
+            background: transparent;
+            color: white;
+        }
 
-            #info2{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-            }
+        .contRow{
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid grey;
+        }
 
-            #info3{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-            }
+        .contColumn{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid grey;
+        }
 
-            p {
-                margin: 0px;
-                padding: 0px;
-                color: black;
-            }
-        </style>
-    </head>
+        .cont{
+            display: block;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid grey;
+            overflow: auto;
+            word-wrap: break-word;
+        }
+
+        p{
+            font-family: fantasy;
+            font-size: 14px;
+            color: white;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        div{
+            font-family: fantasy;
+            font-size: 14px;
+            color: white;
+        }
+
+    </style>
+</head>
+
 <!--
 //    _    _ _______ __  __ _         _____          _      
 //   | |  | |__   __|  \/  | |       / ____|        | |     
@@ -146,69 +145,75 @@
 //                                                          
 //                                                          
 -->
-    <body>
-        <div id="main">
-            <div id="banner">Legend & Myth</div>
-            <div id="game">
-                <div id="info">
-                    <div id="info1">
-                        <p>Name</p>
-                        <p>Level</p>
-                        <p>Health</p>
-                        <p>Energy</p>
-                        <p>Mana</p>
-                        <p>Fatigue</p>
-                    </div>
-                    <div id="info2">
-                        <p>Region</p>
-                        <p>Area</p>
-                        <p>Local</p>
-                        <p>Room</p>
-                    </div>
-                    <div id="info3">
-                        <p>Year</p>
-                        <p>Month</p>
-                        <p>Day/Night</p>
-                    </div>
-                </div>
-                <div id="active">
-                    <div id="room">
-                        <div id="paths">
-                            <p>Paths:</p>
-                            <p>Cellar</p>
-                            <p>Residential District</p>
-                            <p>Shopkeeper's Bedroom</p>
-                        </div>
-                        <div id="players">
-                            <p>Players:</p>
-                            <p>Player25</p>
-                            <p>Player38</p>
-                            <p>Player5</p>
-                        </div>
-                        <div id="enemies">
-                            <p>Enemies:</p>
-                            <p>Skeleton</p>
-                            <p>Feral Wolf</p>
-                            <p>Bandit</p>
-                        </div>
-                        <div id="objects">
-                            <p>Objects:</p>
-                            <p>Statue</p>
-                            <p>Book</p>
-                            <p>Shoe</p>
-                        </div>
-                    </div>
-                    <div id="dialogue"></div>
-                    <div id="shop"></div>
 
-
+<body>
+    <div id="main">
+        <div id="banner">Legend and Myth</div>
+        <div id="body" class="contColumn">
+            <div id="info" class="contRow">
+                <div id="infoChar" class="contColumn">
+                    name level health
                 </div>
-                <div id="io">   
-                    <div id="output"></div>                        
-                    <input id="input" type="text">
+
+                <div id="infoLocal" class="contColumn">
+                    region area room
+                </div>
+
+                <div id="infoCalendar" class="contColumn">
+                    year month day/night
                 </div>
             </div>
+
+            <div id="activePane" class="cont">
+                <div id="welcome" class="cont">Welcome to Legend and Myth!</div>
+                <div id="room" class="contRow">
+                    <div id="roomPaths" class="contColumn">
+                        Paths
+                    </div>
+
+                    <div id="roomPlayers" class="contColumn">
+                        Players
+                    </div>
+
+                    <div id="roomEnemies" class="contColumn">
+                        Enemies
+                    </div>
+
+                    <div id="roomObjects" class="contColumn">
+                        Objects
+                    </div>
+                </div>
+
+                <div id="battle" class="contRow">
+                    <div id="battlePlayers" class="contColumn">
+                        Players
+                    </div>
+
+                    <div id="battleEnemies" class="contColumn">
+                        Enemies
+                    </div>
+                </div>
+
+                <div id="dialogue" class="contColumn">
+                    Dialogue
+                </div>
+
+                <div id="store" class="contRow">
+                    <div id="storeNPC" class="contColumn">
+                        NPC's items / 300gp
+                    </div>
+
+                    <div id="storePlayer" class="contColumn">
+                        Player's items / 300gp
+                    </div>
+                </div>
+            </div>
+
+            <div id="output" class="cont"></div>
+            <input id="input" type="text">
         </div>
+    </div>
+
 <!--
 //         _                                _       _      _____          _      
 //        | |                              (_)     | |    / ____|        | |     
@@ -219,50 +224,59 @@
 //                                           | |                                 
 //                                           |_|                                 
 -->
-        <script>
-            let optLogin = {text: "Login", nextSt: 'usernameStrSt'}
-            let optRegister = {text: "Register", nextSt:''}
 
-            let loginOpSt = {type: 'opt', text: "Welcome to Legend and Myth.", options: ['optLogin', 'optRegister']}
-            let usernameStrSt = {type: 'str', text: "Please enter your username."}
+    <script>
 
-            let dataMap = {usernameStrSt: usernameStrSt,
-                             optLogin: optLogin,
-                             optRegister: optRegister}
+        // options, options states, variables data map, element references
+        let optLogin = {text: "Login", nextSt: 'usernameStrSt'},
+            optRegister = {text: "Register", nextSt:''}
 
-            // prints current options state text and options
-            let curSt = loginOpSt
-            function printOpSt(){
-                document.getElementById("output").innerHTML += `${curSt.text} <br><br>`
+        let loginOpSt = {type: 'opt', text: "Please login or register.", options: ['optLogin', 'optRegister']},
+            usernameStrSt = {type: 'str', text: "Please enter your username."}
 
-                let i = 1
-                for (x in curSt.options){
-                        document.getElementById("output").innerHTML += `${i}. ${dataMap[curSt["options"][x]].text}<br>`
-                        i++
+        let dataMap = {usernameStrSt: usernameStrSt, optLogin: optLogin, optRegister: optRegister}
+
+        let eleOutput = document.getElementById("output"), 
+            eleInput = document.getElementById("input")
+        
+        // prints current options state text and options
+        let curSt = loginOpSt
+        function printOpSt(){
+            eleOutput.innerHTML += `${curSt.text} <br><br>`
+
+            let i = 1
+            for (x in curSt.options){
+                eleOutput.innerHTML += `${i}. ${dataMap[curSt["options"][x]].text}<br>`
+                    i++
+            }
+        }
+        
+        //clears input field on enter key/assigns input/converts input
+        let userInput = 0
+        document.addEventListener('keyup', function (event){
+
+            if (event.key === 'Enter' && eleInput === document.activeElement) {
+                userInput = eleInput.value
+                eleInput.value = ""
+
+                if (! isNaN(userInput)){
+                    //userInput = parseInt(userInput)
+                    eleOutput.innerHTML += userInput
+                    eleOutput.scrollTop = eleOutput.scrollHeight
+                    
                 }
             }
-            
-            //clears input field on enter key
-            let userInput = 0
-            document.addEventListener('keyup', function (event){
-                if (event.key === 'Enter' && document.getElementById("input") === document.activeElement){
-                    userInput = document.getElementById("input").value
-                    document.getElementById("input").value = ""
+        })
+        
+        printOpSt()
 
-                    if (! isNaN(userInput)){
-                        parseInt(userInput)
-                        document.getElementById("output").innerHTML += userInput
-                    }
-                }
-            })
-            
-            printOpSt()
-        </script>
-    </body>
+    </script>
+
+</body>
 </html>
 
 <!--opt: option
-    StrSt: string state
-    OpSt: options state
-    cur: current
-    st: state-->
+StrSt: string state
+OpSt: options state
+cur: current
+st: state-->
