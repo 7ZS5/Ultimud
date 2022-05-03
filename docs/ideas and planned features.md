@@ -2,3 +2,4 @@
 - Customize chat text colors: player names, emoji/actions, ambiance, system messages, objects, paths
 - Large enemy waves: Only 5 enemies can be fought at once, but if there are more enemies in the reserve of the group, they will spawn in battle next.
 - ASCII or Minimal Graphic for room maps. The player can purchase maps of rooms or find them, and then type the map command to open a pop-up window of the room map.
+- Fatigue: Players experience fatigue from time, movement, and actions. Rest and other consumables are used to restore fatigue. When fatigue has reached it's lowest value, the player will receive a debuff.
