@@ -1,2 +1,2 @@
-Build REST API
-Make data structure prototype for the database
+- Build REST API
+- Make data structure prototype for the database
