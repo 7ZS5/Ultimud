@@ -1,1 +1,2 @@
-# test
+Build REST API
+Make data structure prototype for the database
