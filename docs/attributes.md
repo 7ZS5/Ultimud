@@ -1,3 +1,5 @@
+*For each point added to any attribute, it increases the related effect by 2%.
+
 - Power: Melee damage
 - Endurance: Resistance to melee damage
 - Vitality: Hit points
