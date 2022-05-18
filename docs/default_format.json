@@ -1,0 +1,1 @@
+{"userName":STRING, "commandIndex":INT, "command":STRING, "userInput":STRING}
