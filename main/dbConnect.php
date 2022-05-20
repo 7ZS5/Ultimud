@@ -5,18 +5,20 @@
     $dbUsername = 'phpmyadmin';
 
     $dbPassword = 'mint';
+    
+    $dbName = 'myDB';
 
-    $db = new mysqli($serverName, $dbUsername, $dbPassword);
+    $conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
 
-    if ($db->connect_error) {
+    if ($conn->connect_error) {
 
-        exit("Connection failed: " . $db->connect_error);
+        exit("Connection failed: " . $conn->connect_error);
 
     } 
     
     else {
 
-        $connectResult = "Database connected succesfully.";
+        echo "Database connected succesfully.<br>";
 
     }
 

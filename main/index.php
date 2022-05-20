@@ -1,6 +1,6 @@
 <?php
 
-include 'dbConnect.php';
+include 'user.php';
 
 ?>
 
@@ -14,6 +14,7 @@ include 'dbConnect.php';
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<script src="jquery-3.6.0.js"></script>
 
 <style>
 
@@ -106,9 +107,7 @@ include 'dbConnect.php';
 
 <div id="output"></div>
 
-<form method="post" id="form_1">
 <input id="input" type="text">
-</form>
 
 </div>
 
@@ -156,10 +155,6 @@ let dataMap = {
 
         optRegister: {text: "Register", func: 'createUser',  next: 'stRegUsername'},
 
-        //data
-
-        user: ''
-
         }
 
 let funcMap = {
@@ -175,14 +170,6 @@ let funcMap = {
     validPassword: validPassword
     
 }
-
-
-function printConnectStatus() {
-
-        console.log("<?php echo $connectResult; ?>")
-    
-}
-
 
 // prints current input state text and options if any
 
@@ -218,7 +205,7 @@ function printSt() {
 
 function createUser() {
 
-    const user = {
+    let user = {
 
         username: "default",
 
@@ -240,7 +227,10 @@ function assignPassword() {
 
     dataMap['user'].password = userInput
 
-    eleOutput.innerHTML += "New user created.<br><br>"
+    $.post("user.php", {username: dataMap['user'].username, password: dataMap['user'].password})
+
+    console.log("<?php echo $username; ?>");
+
 
 }
 
@@ -355,7 +345,6 @@ eleInput.addEventListener('keyup', (event) => {
 
 })
 
-printConnectStatus()
 printSt()
 
 </script>
