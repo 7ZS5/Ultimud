@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+
+* {
+
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: rgb(0, 255, 0);
+
+}
+
+canvas {
+    position: fixed;
+    top: 500px;
+    left: 50px;
+    width: 320px;
+    height: 320px;
+    border: 3px solid #929292;
+    background-color: #5e5e5e;
+}
+
+#main {
+
+    padding: 10px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(grey, black);
+
+}
+
+#row1 {
+
+    position: fixed;
+    top: 20px;
+    left: 650px;
+
+}
+
+#column2 {
+
+    margin-left: 50px;
+
+}
+
+#column3 {
+
+    margin-left: 50px;
+
+}
+
+#column4 {
+
+    margin-left: 50px;
+
+}
+
+#column5 {
+
+    margin-left: 50px;
+
+}
+
+#column6 {
+
+    margin-left: 50px;
+
+}
+
+#column7 {
+
+    margin-left: 50px;
+
+}
+
+#output {
+
+    border: 1px solid black;
+    width: 600px;
+    height: 400px;
+    overflow: auto;
+    word-wrap: break-word;
+    padding-left: 5px;
+    padding-top: 5px;
+
+}
+
+#input {
+
+    background-color: transparent;
+    border: none;
+    border: 1px solid black;
+    width: 400px;
+    outline: none;
+
+}
+
+.contColumn {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.contRow {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.outputMessage {
+
+    background-color: darkblue;
+
+}
+
+.p1 {
+
+    margin-left: 7px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="main">
+
+<h1>Developer Environment</h1>
+
+<div id="column1" class="contColumn">
+
+    <div id="row1" class="contRow">
+
+        <div id="column2" class="contColumn">
+
+            <div class="contRow">currentRoom:
+                <p id="currentRoom" class="p1">defaultRoom</p>
+            </div>
+
+            <div class="contRow">lastTarget:
+                <p id="lastTarget" class="p1">defaultNPC</p>
+            </div>
+            
+        </div>
+
+        <div id="column3" class="contColumn">
+
+            <div class="contRow">Name:
+                <p id="name" class="p1">defaultName</p>
+            </div>
+
+            <div class="contRow">Level:
+                <p id="level" class="p1">1</p>
+            </div>
+
+            <div class="contRow">Exp:
+                <p id="exp" class="p1">0</p>
+            </div>
+
+            <div class="contRow">Hp:
+                <p id="hp" class="p1">100</p>
+            </div>
+
+            <div class="contRow">Mp:
+                <p id="mp" class="p1">0</p>
+            </div>
+
+            <div class="contRow">Ep:
+                <p id="ep" class="p1">0</p>
+            </div>
+
+            <div class="contRow">Fatigue:
+                <p id="fatigue" class="p1">50</p>
+            </div>
+            
+        </div>
+
+        <div id="column4" class="contColumn">Inventory:
+
+            <p class="invItem">defaultItem</p>
+            <p class="invItem">defaultItem</p>
+            <p class="invItem">defaultItem</p>
+
+        </div>
+
+        <div id="column5" class="contColumn">Skills:
+    
+            <p class="skill">defaultSkill</p>
+            <p class="skill">defaultSkill</p>
+            <p class="skill">defaultSkill</p>
+
+        </div>
+
+        <div id="column6" class="contColumn">Spells:
+
+            <p class="spell">defaultSpell</p>
+            <p class="spell">defaultSpell</p>
+            <p class="spell">defaultSpell</p>
+        
+        </div>
+
+        <div id="column7" class="contColumn">Equipment:
+
+            <div class="contRow">Head:
+                <p id="head" class="p1">defaultHead</p>
+            </div>
+
+            <div class="contRow">Torso:
+                <p id="torso" class="p1">defaultTorso</p>
+            </div>
+
+            <div class="contRow">Legs:
+                <p id="legs" class="p1">defaultLegs</p>
+            </div>
+
+            <div class="contRow">Hands:
+                <p id="hands" class="p1">defaultHands</p>
+            </div>
+
+            <div class="contRow">Feet:
+                <p id="feet" class="p1">defaultFeet</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="output"></div>
+
+<input id="input" type="text">
+
+<canvas id="canvas"></canvas>
+
+</div>
+
+<script>
+
+/* LEGEND
+
+opt: option
+
+cur: current
+
+st: state
+
+str: string
+
+int: integer
+
+ele: element
+
+*/
+
+// options, states, variables data map, element references
+
+const eleOutput = document.getElementById('output'),
+      eleInput = document.getElementById('input')
+
+let stateMap = {
+
+        1: {id: 'createChoose', type: 'opt', text: "Create or choose a character.", options: [1, 2]},
+        2: {id: 'chooseCharacter', type: 'opt', text: "Choose your character.", options: []},
+        3: {id: 'chooseAncestry', type: 'assign', text: "Choose your character's ancestry", arg: character['ancestry'], next: 4},
+        4: {id: 'nameCharacter', type: 'assign', text: "What will your character's name be?", arg: character['name'], next: ''}
+
+    }
+
+let optMap = {
+
+        1: {id: 'choose', text: "Choose.", next: 2},
+        2: {id: 'create', text: "Create.", next: 3}
+    
+    }
+        
+let funcMap = {
+
+    }
+
+let character = {
+    
+    name: "default",
+    ancestry: "default"
+
+}
+
+// prints current input state text and options if any
+
+let stCur = stateMap['1']
+
+function printSt() { 
+
+    eleOutput.innerHTML += `${stCur.text}<br>`
+
+    if (stCur.type === 'opt') {
+
+        let i = 1
+
+        for (x in stCur.options) {
+
+            eleOutput.innerHTML += `<br>${i}. ${optMap[stCur.options[x]].text}`
+
+            i++
+
+        }
+
+        eleOutput.innerHTML += "<br>"
+
+}
+
+    eleOutput.innerHTML += "<br>"
+
+    eleOutput.scrollTop = eleOutput.scrollHeight
+
+}
+
+function assign(para1) {
+
+    para1 = userInput
+
+}
+
+function validate(para1) {
+
+    if (para1 === userInput) {
+
+        return true
+
+    }
+
+    return false
+
+}
+
+//clears input field on enter key/assigns input/converts input
+
+let userInput
+
+eleInput.addEventListener('keyup', (event) => {
+
+    if (event.key === 'Enter' & eleInput.value != '') {
+
+        userInput = eleInput.value
+
+        eleInput.value = ""
+
+        if (! isNaN(userInput)) {
+
+            userInput = parseInt(userInput)
+
+        }
+        
+        //checks if the current input state is an options, string, or int type
+        //and then prints the text of that input state
+
+        switch (stCur.type) {
+
+            case 'opt':
+
+                let optChoice = optMap[stCur['options'][userInput-1]]
+
+                if (isNaN(userInput)) {
+
+                    break
+
+                }
+
+                if (optChoice.func) {
+
+                    funcMap[optChoice.func]()
+
+                }
+
+                stCur = stateMap[optChoice.next]
+
+                printSt()
+
+                break
+
+            case 'assign':
+
+                assign(stCur.arg)
+
+                stCur = stateMap[stCur.next]
+
+                console.log(character['ancestry'])
+
+                printSt()
+
+                break
+            
+            case 'validate':
+
+                if (isNaN(userInput)) {
+
+                    if (funcMap[stCur.func]() === true) {
+
+                        stCur = stateMap[stCur.next]
+
+                        printSt()
+
+                        break
+
+                    }
+
+                break
+
+                }
+        }
+    }
+})
+
+printSt()
+
+</script>
+
+</body>
+
+</html>
