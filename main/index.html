@@ -21,9 +21,6 @@
 }
 
 canvas {
-    position: fixed;
-    top: 500px;
-    left: 50px;
     border: 3px solid #929292;
     background-color: #5e5e5e;
 }
@@ -40,47 +37,11 @@ canvas {
 
 }
 
-#row1 {
+#column1 {
 
     position: fixed;
     top: 20px;
     left: 650px;
-
-}
-
-#column2 {
-
-    margin-left: 50px;
-
-}
-
-#column3 {
-
-    margin-left: 50px;
-
-}
-
-#column4 {
-
-    margin-left: 50px;
-
-}
-
-#column5 {
-
-    margin-left: 50px;
-
-}
-
-#column6 {
-
-    margin-left: 50px;
-
-}
-
-#column7 {
-
-    margin-left: 50px;
 
 }
 
@@ -146,22 +107,26 @@ canvas {
 
     <div id="row1" class="contRow">
 
-        <div id="column2" class="contColumn">
+        <div class="contColumn" style="margin-left: 50px;">
 
             <div class="contRow">currentRoom:
-                <p id="currentRoom" class="p1">defaultRoom</p>
+                <p id="currentRoom" class="p1">none</p>
             </div>
 
-            <div class="contRow">lastTarget:
-                <p id="lastTarget" class="p1">defaultNPC</p>
+            <div class="contRow">currentTarget:
+                <p id="lastTarget" class="p1">none</p>
             </div>
             
         </div>
 
-        <div id="column3" class="contColumn">
+        <div class="contColumn" style="margin-left: 50px;">
 
             <div class="contRow">Name:
-                <p id="name" class="p1">defaultName</p>
+                <p id="name" class="p1">none</p>
+            </div>
+
+            <div class="contRow">Ancestry:
+                <p id="ancestry" class="p1">defaultAncestry</p>
             </div>
 
             <div class="contRow">Level:
@@ -190,50 +155,80 @@ canvas {
             
         </div>
 
-        <div id="column4" class="contColumn">Inventory:
+        <div class="contColumn" style="margin-left: 50px;">Inventory:
 
-            <p class="invItem">defaultItem</p>
-            <p class="invItem">defaultItem</p>
-            <p class="invItem">defaultItem</p>
+            <p class="invItem">none</p>
 
         </div>
 
-        <div id="column5" class="contColumn">Skills:
+        <div class="contColumn" style="margin-left: 50px;">Skills:
     
-            <p class="skill">defaultSkill</p>
-            <p class="skill">defaultSkill</p>
-            <p class="skill">defaultSkill</p>
+            <p class="skill">none</p>
 
         </div>
 
-        <div id="column6" class="contColumn">Spells:
+        <div class="contColumn" style="margin-left: 50px;">Spells:
 
-            <p class="spell">defaultSpell</p>
-            <p class="spell">defaultSpell</p>
-            <p class="spell">defaultSpell</p>
+            <p class="spell">none</p>
         
         </div>
 
-        <div id="column7" class="contColumn">Equipment:
+        <div class="contColumn" style="margin-left: 50px;">Equipment:
 
             <div class="contRow">Head:
-                <p id="head" class="p1">defaultHead</p>
+                <p id="head" class="p1">none</p>
             </div>
 
             <div class="contRow">Torso:
-                <p id="torso" class="p1">defaultTorso</p>
+                <p id="torso" class="p1">none</p>
             </div>
 
             <div class="contRow">Legs:
-                <p id="legs" class="p1">defaultLegs</p>
+                <p id="legs" class="p1">none</p>
             </div>
 
             <div class="contRow">Hands:
-                <p id="hands" class="p1">defaultHands</p>
+                <p id="hands" class="p1">none</p>
             </div>
 
             <div class="contRow">Feet:
-                <p id="feet" class="p1">defaultFeet</p>
+                <p id="feet" class="p1">none</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="row2" class="contRow" style="margin-top: 50px;">
+
+        <div class="contColumn" style="margin-left: 50px;">
+
+            <div class="contRow">Weapon1:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Weapon2:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Weapon3:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Weapon4:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Ammo:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Shield:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">ShieldBack:
+                <p class="p1">none</p>
             </div>
 
         </div>
@@ -242,11 +237,11 @@ canvas {
 
 </div>
 
+<canvas id="canvas"></canvas>
+
 <div id="output"></div>
 
 <input id="input" type="text">
-
-<canvas id="canvas"></canvas>
 
 </div>
 
