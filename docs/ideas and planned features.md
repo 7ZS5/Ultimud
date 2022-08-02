@@ -8,7 +8,7 @@
 
 - Fatigue: Players experience fatigue from time, movement, and actions. Rest and other consumables are used to restore fatigue. When fatigue has reached it's lowest value, the player will receive a debuff. To restore fatigue, you can eat, drink, or rest.
  
-- Calender/time
+- Calender/time: This is used to manage events in game.
 
 - World events: These can relate to the main story, or it could even be something as simple as random weather events or events related to the room the player is currently in. They may even be custom designed by the game masters.
  
