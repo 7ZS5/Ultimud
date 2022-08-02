@@ -6,7 +6,7 @@
 
 - Room maps: The player can purchase maps of rooms or find them, and then type the map command to open a pop-up window of the room map.
 
-- Fatigue: Players experience fatigue from time, movement, and actions. Rest and other consumables are used to restore fatigue. When fatigue has reached it's lowest value, the player will receive a debuff.
+- Fatigue: Players experience fatigue from time, movement, and actions. Rest and other consumables are used to restore fatigue. When fatigue has reached it's lowest value, the player will receive a debuff. To restore fatigue, you can eat, drink, or rest.
  
 - Calender/time
 
