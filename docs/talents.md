@@ -7,8 +7,8 @@
 - Battlemage: Can wield a weapon or shield with a staff
 
 - One with the Weapon I: +5 with two-handed weapons
-- One with the Weapon: +10 Bonus with two-handed weapons
-- One with the Weapon: +15 Bonus with two-handed weapons
+- One with the Weapon II: +10 Bonus with two-handed weapons
+- One with the Weapon III: +15 Bonus with two-handed weapons
 
 - Magi I: Can learn apprentice magic
 - Magi II: Can learn adept magic
