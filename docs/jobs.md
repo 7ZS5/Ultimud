@@ -10,3 +10,4 @@
 - officer
 - entertainer
 - explorer
+- hunter
