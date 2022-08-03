@@ -21,8 +21,7 @@
 }
 
 canvas {
-    border: 3px solid #929292;
-    background-color: #5e5e5e;
+    border: 1px solid #000000;
 }
 
 #main {
@@ -126,7 +125,7 @@ canvas {
             </div>
 
             <div class="contRow">Ancestry:
-                <p id="ancestry" class="p1">defaultAncestry</p>
+                <p id="ancestry" class="p1">none</p>
             </div>
 
             <div class="contRow">Level:
@@ -228,6 +227,34 @@ canvas {
             </div>
 
             <div class="contRow">ShieldBack:
+                <p class="p1">none</p>
+            </div>
+
+        </div>
+
+        <div class="contColumn" style="margin-left: 50px;">
+
+            <div class="contRow">bodyType:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">Height:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">hairStyle:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">facialHairStyle:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">hairColor:
+                <p class="p1">none</p>
+            </div>
+
+            <div class="contRow">eyeColor:
                 <p class="p1">none</p>
             </div>
 
@@ -441,7 +468,6 @@ let myGameArea = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
     }
 }
-
 
 function component(width, height, color, x, y) {
     this.width = width
