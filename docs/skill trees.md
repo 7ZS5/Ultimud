@@ -28,19 +28,21 @@
 
 ### dragon magic:
 
-### fire magic:
+### elemental magic:
+
+#### fire magic:
 - flame ball:
 - burning form (lvl 30): While active, the player character becomes a fire elemental
 
-### earth magic:
+#### earth magic:
 - hurl stone:
 - stone form (lvl 30): While active, the player character becomes an earth elemental
 
-### air magic:
+#### air magic:
 - gust:
 - cloud form (lvl 30): While active, the player character becomes an air elemental
 
-### water magic:
+#### water magic:
 - drown:
 - liquid form (lvl 30): While active, the player character becomes a water elemental
 
