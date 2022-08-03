@@ -13,18 +13,14 @@
 ### arcane magic:
 - bolt: +5 arcane damage spell
 - bind: enemy target cannot move, attack, or use abilities
+- mirror:
+- floating sword:
+- dispel:
+- magic shield:
 
 ### spirit magic:
 - channel:
 - summon:
-
-### sorcery magic:
-- mirror:
-- floating sword:
-
-### anti-magic:
-- dispel:
-- magic shield:
 
 ### rune magic:
 
