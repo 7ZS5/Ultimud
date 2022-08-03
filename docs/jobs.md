@@ -9,3 +9,4 @@
 - soldier
 - officer
 - entertainer
+- explorer
