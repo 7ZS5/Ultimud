@@ -1,6 +1,8 @@
 ## Magic
 
 ### dark magic:
+
+#### necromancy:
 - siphon: take 10hp from enemy target to yourself
 - raise minion: raise undead minion equal to your level
 
