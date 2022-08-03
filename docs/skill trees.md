@@ -24,7 +24,7 @@
 - dispel:
 - magic shield:
 
-### rune magic(dwarf only):
+### rune magic:
 
 ### nature magic:
 
