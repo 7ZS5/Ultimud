@@ -1,0 +1,11 @@
+- farmer
+- mason
+- carpenter
+- smith
+- tax collector
+- noble
+- guard
+- scholar
+- soldier
+- officer
+- entertainer
