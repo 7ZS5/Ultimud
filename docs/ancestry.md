@@ -1,0 +1,9 @@
+## Half-giants
+## Humans
+## Elves
+## Gnomes
+## Dwarves
+## Beastkin
+## Orcs
+## Trolls
+## Goblins
