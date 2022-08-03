@@ -62,19 +62,19 @@
 
 ## weaponmastery:
 
-bows:
+### bows:
 - power shot: ranged attack with +5 damage
 - stun shot: regular damage but 35% chance to stun enemy target
 
-crossbows and guns:
+### crossbows and guns:
 
-throwing:
+### throwing:
 
-swords and axes:
+### swords and axes:
 
-hammers and maces:
+### hammers and maces:
 
-polearms:
+### polearms:
 
 # Arts
 
