@@ -13,7 +13,7 @@
 
 ## Gnomes
 ### Desc: Very small people. They have spent many ages mastering mind magics.
-- +10% effect with mind magic
+- +10% effectiveness with mind magic
 
 ## Dwarves
 ### Desc: They like to drink, celebrate, and mine!
@@ -35,3 +35,7 @@
 ## Goblins
 ### Desc: Another green kind, only smaller!
 - none
+
+## Forsaken
+### Desc: Those who turn to the dark arts. They are the undead, vampires, weretypes, and the ghostly.
+- +10% effectiveness with dark magic
