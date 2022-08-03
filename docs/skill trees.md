@@ -22,6 +22,8 @@
 - channel:
 - summon:
 
+## mind magic:
+
 ## rune magic:
 
 ## nature magic:
