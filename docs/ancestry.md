@@ -7,31 +7,31 @@
 - +10% progression in any skill tree
 
 ## Elves
-### Desc:
+### Desc: There are three kinds of elves known to the lands. Royal elves, wild elves, and forsaken elves.
 - +5 ranged damage
 - +10% effect with nature skills and nature magic
 
 ## Gnomes
-### Desc:
+### Desc: Very small people. They have spent many ages mastering mind magics.
 - +10% effect with mind magic
 
 ## Dwarves
-### Desc:
+### Desc: They like to drink, celebrate, and mine!
 - +5 damage resistance with armor
 - +5 hammer & axe damage
 
 ## Beastkin
-### Desc:
+### Desc: Beings of an ancient curse. Their kind is found throughout all the land, taking many forms.
 - Immune to disease and poison
 
 ## Orcs
-### Desc:
+### Desc: Some say they are descendents of men or elves. Their skin is green.
 - +10% health
  
 ## Trolls
-### Desc:
+### Desc: Slightly taller than orcs with longer arms, equally as vile. Also green.
 - none
 
 ## Goblins
-### Desc:
+### Desc: Another green kind, only smaller!
 - none
