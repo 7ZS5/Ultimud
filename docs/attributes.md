@@ -1,3 +1,5 @@
+### Base Attributes:
+
 - Power: Melee damage
 - Endurance: Resistance to melee damage
 - Vitality: Hit points
