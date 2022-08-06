@@ -13,8 +13,9 @@
 
 ### Multipliers:
 
-For every certain amount of points you put into a stat, a multiplier is applied to the attribute you have put points into.
-For example look at this template of a starter character at level 1.
+For every certain amount of points you put into a stat, a multiplier is applied to the attribute you have put points into. 
+Your character still improves when you put points into an attribute, but you only receive a bonus multiplier when you
+reach the required amount of points. For example look at this template of a starter character at level 1.
 
 - Power: 3 x0.1
 - Endurance: 3 x0.1
@@ -41,5 +42,5 @@ However, we will update some stats and then see what happens.
 - Focus: 3 x0.1
 - Wisdom: 4 x0.1
 
-Power and stamina received a multipier because it reached 8 points.
+Power and stamina received a x0.3 multipier because it reached 8 points.
 The trend continues onward each time, but as you level up, the requirement gets higher.
