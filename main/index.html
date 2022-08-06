@@ -12,12 +12,10 @@
 <style>
 
 * {
-
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     color: rgb(0, 255, 0);
-
 }
 
 canvas {
@@ -265,6 +263,10 @@ canvas {
                 <p class="p1">none</p>
             </div>
 
+            <div class="contRow">skinTone:
+                <p class="p1">none</p>
+            </div>
+
             <div class="contRow">hairStyle:
                 <p class="p1">none</p>
             </div>
@@ -322,18 +324,93 @@ const eleOutput = document.getElementById('output'),
 
 let stateMap = {
 
-        1: {id: 'createChoose', type: 'opt', text: "Create or choose a character.", options: [1, 2]},
+        //intro menu
+        1: {id: 'createOrChoose', type: 'opt', text: "Create or choose a character.", options: [1,2]},
         2: {id: 'chooseCharacter', type: 'opt', text: "Choose your character.", options: []},
-        3: {id: 'chooseAncestry', type: 'assign', text: "Choose your character's ancestry", arg: 'ancestry', next: 4},
-        4: {id: 'nameCharacter', type: 'assign', text: "What will your character's name be?", arg: 'name', next: ''}
+        
+        //character creation
+        3: {id: 'chooseAncestry', type: 'opt', text: "Choose your character's ancestry", options: [3,4,5,6,7,8,9,10,11,12]},
+        4: {id: 'nameCharacter', type: 'assign', text: "What will your character's name be?", arg: 'name', next: 5},
 
+        //appearance
+        5: {id: 'bodyType', type: 'opt', text: "Choose body type.", options: [13,14,15,16]},
+        6: {id: 'height', type: 'opt', text: "Choose height.", options: [17,18,19]},
+        7: {id: 'skinTone', type: 'opt', text: "Choose skin tone.", options: [20,21,22]},
+        8: {id: 'hairStyle', type: 'opt', text: "Choose hair style.", options: [23,24,25,26,27,28,29,30]},
+        9: {id: 'facialHairStyle', type: 'opt', text: "Choose facial hair style.", options: [31,32,33,34,35,36]},
+        10: {id: 'hairColor', type: 'opt', text: "Choose hair color.", options: [37,38,39,40,41]},
+        11: {id: 'eyeColor', type: 'opt', text: "Choose eye color.", options: [42,43,44,45,46,47,48]}
     }
 
 let optMap = {
 
+        //intro menu
         1: {id: 'choose', text: "Choose.", next: 2},
-        2: {id: 'create', text: "Create.", next: 3}
-    
+        2: {id: 'create', text: "Create.", next: 3},
+
+        //ancestries
+        3: {id: 'human', text: "Human", next: 4},
+        4: {id: 'dwarf', text: "Dwarf", next: 4},
+        5: {id: 'elf', text: "Elf", next: 4},
+        6: {id: 'half-giant', text: "Half-giant", next: 4},
+        7: {id: 'gnome', text: "Gnome", next: 4},
+        8: {id: 'ogre', text: "Ogre", next: 4},
+        9: {id: 'orc', text: "Orc", next: 4},
+        10: {id: 'troll', text: "Troll", next: 4},
+        11: {id: 'goblin', text: "Goblin", next: 4},
+        12: {id: 'forsaken', text: "Forsaken", next: 4},
+
+        //appearance
+
+        13: {id: 'fat', text: "fat", next: 6},
+        14: {id: 'muscular', text: "muscular", next: 6},
+        15: {id: 'thin', text: "thin", next: 6},
+        16: {id: 'average', text: "average", next: 6},
+
+        //height
+        17: {id: 'tall', text: "tall", next: 7},
+        18: {id: 'short', text: "short", next: 7},
+        19: {id: 'average', text: "average", next: 7},
+
+        //skin tone
+        20: {id: 'tan', text: "tan", next: 8},
+        21: {id: 'dark', text: "dark", next: 8},
+        22: {id: 'pale', text: "pale", next: 8},
+
+        //hair style
+        23: {id: 'long', text: "long", next: 9},
+        24: {id: 'short', text: "short", next: 9},
+        25: {id: 'mohawk', text: "mohawk", next: 9},
+        26: {id: 'bald', text: "bald", next: 9},
+        27: {id: 'shaved', text: "shaved", next: 9},
+        28: {id: 'mullet', text: "mullet", next: 9},
+        29: {id: 'spiked', text: "spiked", next: 9},
+        30: {id: 'braided', text: "braided", next: 9},
+
+        //facial hair style
+        31: {id: 'long beard', text: "long beard", next: 10},
+        32: {id: 'short beard', text: "short beard", next: 10},
+        33: {id: 'clean shaven', text: "clean shaven", next: 10},
+        34: {id: 'mustache', text: "mustache", next: 10},
+        35: {id: 'soul patch', text: "soul patch", next: 10},
+        33: {id: 'mutton chops', text: "mutton chops", next: 10},
+        36: {id: 'goatee', text: "goatee", next: 10},
+
+        //hair color
+        37: {id: 'black', text: "black", next: 11},
+        38: {id: 'brown', text: "brown", next: 11},
+        39: {id: 'blonde', text: "blonde", next: 11},
+        40: {id: 'red', text: "red", next: 11},
+        41: {id: 'grey', text: "grey", next: 11},
+
+        //eye color
+        42: {id: 'black', text: "black", next: 11},
+        43: {id: 'brown', text: "brown", next: 11},
+        44: {id: 'red', text: "red", next: 11},
+        45: {id: 'blue', text: "blue", next: 11},
+        46: {id: 'green', text: "green", next: 11},
+        47: {id: 'yellow', text: "yellow", next: 11},
+        48: {id: 'white', text: "white", next: 11}
     }
         
 let funcMap = {
@@ -605,20 +682,6 @@ function moveNorth() {
     }
 }
 
-function moveNorthEast() {
-    if (myGamePiece.y > 0) {
-        myGamePiece.x += 24
-        myGamePiece.y -= 24
-    }
-}
-
-function moveNorthWest() {
-    if (myGamePiece.y > 0) {
-        myGamePiece.x -= 24
-        myGamePiece.y -= 24
-    }
-}
-
 function moveEast() {
     if (myGamePiece.x < 96) {
         myGamePiece.x += 24
@@ -631,20 +694,6 @@ function moveSouth() {
     }
 }
 
-function moveSouthEast() {
-    if (myGamePiece.y < 96) {
-        myGamePiece.x += 24
-        myGamePiece.y += 24
-    }
-}
-
-function moveSouthWest() {
-    if (myGamePiece.y < 96) {
-        myGamePiece.x -= 24
-        myGamePiece.y += 24
-    }
-}
-
 function moveWest() {
     if (myGamePiece.x > 0) {
         myGamePiece.x -= 24
@@ -653,35 +702,19 @@ function moveWest() {
 
 document.addEventListener('keyup', function(event) {
 
-    if (event.keyCode == 87) {
+    if (event.keyCode == 38) {
         moveNorth()
     }
-    
-    else if (event.keyCode == 69) {
-        moveNorthEast()
-    }
 
-    else if (event.keyCode == 81) {
-        moveNorthWest()
-    }
-
-    else if (event.keyCode == 68) {
+    else if (event.keyCode == 39) {
         moveEast()
     }
 
-    else if (event.keyCode == 88) {
+    else if (event.keyCode == 40) {
         moveSouth()
     }
 
-    else if (event.keyCode == 67) {
-        moveSouthEast()
-    }
-
-    else if (event.keyCode == 90) {
-        moveSouthWest()
-    }
-
-    else if (event.keyCode == 65) {
+    else if (event.keyCode == 37) {
         moveWest()
     }
 })
