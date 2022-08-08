@@ -1,12 +1,12 @@
 ## System:
-- help: List the help menu and help commands.
-- cmds: Lists all game commands.
+#### help: List the help menu and help commands.
+#### cmds: Lists all game commands.
 
 ## Combat:
-- attack or atk: For engaging in battle with a monster, or an npc.
-- flee: For escaping from an enemy in battle. Some enemies cannot be escaped, though.
-- (skill name) + (target/self/object): To use a skill on an object, target, or self.
-- (spell name) + (target/self/object): To use a spell on an object, target, or self.
+#### attack or atk: For engaging in battle with a monster, or an npc.
+#### flee: For escaping from an enemy in battle. Some enemies cannot be escaped, though.
+#### (skill name) + (target/self/object): To use a skill on an object, target, or self.
+#### (spell name) + (target/self/object): To use a spell on an object, target, or self.
 
 ## Actions:
 - move + (number): The available rooms will be listed with index.
