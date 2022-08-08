@@ -1,14 +1,14 @@
-# System
+## System
 - help: List the help menu and help commands.
 - cmds: Lists all game commands.
 
-# Combat
+## Combat
 - attack or atk: For engaging in battle with a monster, or an npc.
 - flee: For escaping from an enemy in battle. Some enemies cannot be escaped, though.
 - (skill name) + (target/self/object): To use a skill on an object, target, or self.
 - (spell name) + (target/self/object): To use a spell on an object, target, or self.
 
-# Actions
+## Actions
 - move + (number): The available rooms will be listed with index.
 - harvest + (object): Get raw material like stone, wood, herbs, and crops from the related object nearby
 - explore: Discover rooms, npcs, and objects nearby.
@@ -30,7 +30,7 @@
 - equip + (item): To equip specified item in your inventory.
 - unequip + (item): To unequip specified equipped item.
 
-# Emotes
+## Emotes
 - hail + (target): Sends a simple "Hail, (target)!" to the instance chat.
 - yes: To answer yes
 - no: To answer no
