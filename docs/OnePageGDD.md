@@ -1,5 +1,3 @@
-# One page game design document
-
 ## Game type
 Browser-based, text-based high-fantasy RPG with supplemental graphics
 
