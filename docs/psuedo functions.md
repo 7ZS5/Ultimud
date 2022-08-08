@@ -1,8 +1,8 @@
-# System
+## System
 - room event to output
 - user command input
 
-# Interaction
+## Interaction
 - move
 - accept npc quest
 - trade with npc
@@ -13,12 +13,12 @@
 - use item on object
 - consume item
 
-# Crafting
+## Crafting
 - add ingredient/part
 - remove item/part
 - craft item
 
-# Combat
+## Combat
 - auto-attack
 - cast spell on enemy
 - cast spell on ally
@@ -28,7 +28,7 @@
 - use item on ally
 - flee
 
-# Multiplayer
+## Multiplayer
 - request duel, request trade
 - say to chat
 - message player
