@@ -1,19 +1,37 @@
-- user command input
-- user join game/leave game
-- move
-- say
+# System
 - room event to output
-- attack
-- cast spell
-- use ability
-- consume item
-- use item on object
-- destroy item
-- buy item, sell item
+- user command input
+
+# Interaction
+- move
+- accept npc quest
+- trade with npc
+- talk to npc
 - examine item
+- buy item, sell item
+- destroy item
+- use item on object
+- consume item
+
+# Crafting
+- add ingredient/part
+- remove item/part
+- craft item
+
+# Combat
+- auto-attack
+- cast spell on enemy
+- cast spell on ally
+- use skill on enemy
+- use skill on ally
+- use item on enemy
+- use item on ally
+- flee
+
+# Multiplayer
+- request duel, request trade
+- say to chat
+- message player
 - invite to group, disband group, give group leadership, leave group
 - invite to guild, disband guild, give guild leadership, leave guild
-- request duel, request trade
-- talk to npc
-- trade with npc
-- accept npc quest
+- user join server/leave server
