@@ -1,8 +1,8 @@
 # Navigation
-- Move north: Up arrow key
-- Move east: Right arrow key
-- Move south: Down arrow key
-- Move west: Left arrow key
+- Move north: up arrow key
+- Move east: right arrow key
+- Move south: down arrow key
+- Move west: left arrow key
 
 # Interaction
 - Explore: q
