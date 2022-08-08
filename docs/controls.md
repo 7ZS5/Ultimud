@@ -1,10 +1,10 @@
-# Navigation
+## Navigation
 - Move north: up arrow key
 - Move east: right arrow key
 - Move south: down arrow key
 - Move west: left arrow key
 
-# Interaction
+## Interaction
 - Explore: q
 - Search: w
 - Examine: e
@@ -12,7 +12,7 @@
 - Engage enemy: a
 - Talk: s
 
-# Combat
+## Combat
 - Auto-attack: q
 - Spell: w
 - Skill: e
