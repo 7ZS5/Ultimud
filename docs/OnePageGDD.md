@@ -12,7 +12,7 @@ Crafting, large battles, exploration, epic story
 
 ## Interface
 A multi-pane UI with an input field for typing commands, an output field for real-time game events, 
-and other panes for character info, battle, npc dialogue, and also a 2D map with character movement
+and other panes for character info, battle, npc dialogue, and also a limited 2D grid world-map for reference
 
 ## Art style
 Mostly programmer art for visual reference rather than aesthetics
