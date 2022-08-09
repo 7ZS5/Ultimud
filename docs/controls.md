@@ -8,12 +8,20 @@
 - Explore: q
 - Search: w
 - Examine: e
-- Take: r
-- Engage enemy: a
-- Talk: s
+- Take: a
+- Engage enemy: s
+- Talk: d
 
 ## Combat
 - Auto-attack: q
 - Spell: w
 - Skill: e
-- Item: r
+- Item: a
+
+## Menus
+- Character: u
+- Inventory: i
+- Journal: o
+- Map: j
+- Skills: k
+- Spells: l
