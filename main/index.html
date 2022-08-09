@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,34 +14,40 @@
     margin: 0px;
     box-sizing: border-box;
     color: rgb(0, 255, 0);
+    font-size: 18px;
 }
 
-canvas {
-    border: 1px solid #000000;
+::-webkit-scrollbar {
+    background: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: radial-gradient(rgb(85, 85, 85), rgb(27, 27, 27));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-image: radial-gradient(rgb(99, 99, 99), rgb(39, 39, 39));
 }
 
 #main {
-
     padding: 10px;
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(grey, black);
-
+    background-image: linear-gradient(rgb(112, 112, 112), rgb(17, 17, 17));
 }
 
 #column1 {
-
     position: fixed;
     top: 20px;
     left: 650px;
-
 }
 
 #output {
-
     border: 1px solid black;
     width: 600px;
     height: 400px;
@@ -51,62 +55,32 @@ canvas {
     word-wrap: break-word;
     padding-left: 5px;
     padding-top: 5px;
-
 }
 
 #input {
-
     background-color: transparent;
     border: none;
     border: 1px solid black;
-    width: 400px;
+    width: 500px;
     outline: none;
-
-}
-
-#canvasFloor {
-    position: fixed;
-    top: 500px;
-    left: 10px;
-    background-color: black;
-}
-
-#canvasObjects {
-    position: fixed;
-    top: 500px;
-    left: 10px;
-}
-
-#canvasPlayer {
-    position: fixed;
-    top: 500px;
-    left: 10px;
 }
 
 .contColumn {
-
     display: flex;
     flex-direction: column;
-
 }
 
 .contRow {
-
     display: flex;
     flex-direction: row;
-
 }
 
 .outputMessage {
-
     background-color: darkblue;
-
 }
 
 .p1 {
-
     margin-left: 7px;
-
 }
 
 </style>
@@ -117,23 +91,9 @@ canvas {
 
 <div id="main">
 
-<h1>Developer Environment</h1>
-
 <div id="column1" class="contColumn">
 
     <div id="row1" class="contRow">
-
-        <div class="contColumn" style="margin-left: 50px;">
-
-            <div class="contRow">currentRoom:
-                <p id="currentRoom" class="p1">none</p>
-            </div>
-
-            <div class="contRow">currentTarget:
-                <p id="lastTarget" class="p1">none</p>
-            </div>
-            
-        </div>
 
         <div class="contColumn" style="margin-left: 50px;">
 
@@ -176,21 +136,15 @@ canvas {
         </div>
 
         <div class="contColumn" style="margin-left: 50px;">Inventory:
-
             <p class="invItem">none</p>
-
         </div>
 
         <div class="contColumn" style="margin-left: 50px;">Skills:
-    
             <p class="skill">none</p>
-
         </div>
 
         <div class="contColumn" style="margin-left: 50px;">Spells:
-
             <p class="spell">none</p>
-        
         </div>
 
         <div class="contColumn" style="margin-left: 50px;">Equipment:
@@ -287,11 +241,39 @@ canvas {
 
     </div>
 
-</div>
+    <div id="row3" class="contRow" style="margin-top: 50px;">
 
-<canvas id="canvasFloor"></canvas>
-<canvas id="canvasObjects"></canvas>
-<canvas id="canvasPlayer"></canvas>
+        <div class="contColumn" style="margin-left: 50px;">
+
+            <div class="contRow">currentRoom:
+                <p id="currentRoom" class="p1">none</p>
+            </div>
+        
+            <div class="contRow">currentTarget:
+                <p id="lastTarget" class="p1">none</p>
+            </div>
+
+            <div class="contRow">North:
+                <p id="north" class="p1">none</p>
+            </div>
+
+            <div class="contRow">East:
+                <p id="east" class="p1">none</p>
+            </div>
+
+            <div class="contRow">South:
+                <p id="south" class="p1">none</p>
+            </div>
+
+            <div class="contRow">West:
+                <p id="west" class="p1">none</p>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</div>
 
 <div id="output"></div>
 
@@ -302,19 +284,12 @@ canvas {
 <script>
 
 /* LEGEND
-
 opt: option
-
 cur: current
-
 st: state
-
 str: string
-
 int: integer
-
 ele: element
-
 */
 
 // options, states, variables data map, element references
@@ -325,173 +300,139 @@ const eleOutput = document.getElementById('output'),
 let stateMap = {
 
         //intro menu
-        1: {id: 'createOrChoose', type: 'opt', text: "Create or choose a character.", options: [1,2]},
-        2: {id: 'chooseCharacter', type: 'opt', text: "Choose your character.", options: []},
-        
+        createOrChoose: {type: 'opt',
+                         text: "Create or choose a character.",
+                         options: [{text: "Choose.", next: 'chooseCharacter'},
+                                   {text: "Create.", next: 'chooseAncestry'}]},
+
+        chooseCharacter: {type: 'opt', 
+                          text: "Choose your character.", 
+                          options: []},
+
         //character creation
-        3: {id: 'chooseAncestry', type: 'opt', text: "Choose your character's ancestry", options: [3,4,5,6,7,8,9,10,11,12]},
-        4: {id: 'nameCharacter', type: 'assign', text: "What will your character's name be?", arg: 'name', next: 5},
+        chooseAncestry: {type: 'opt', 
+                         text: "Choose your character's ancestry.", 
+                         options: [{text: "Human", next: 'nameCharacter'}, 
+                                   {text: "Dwarf", next: 'nameCharacter'}, 
+                                   {text: "Elf", next: 'nameCharacter'},
+                                   {text: "Half-giant", next: 'nameCharacter'},
+                                   {text: "Halfling", next: 'nameCharacter'}]},
+
+        nameCharacter: {type: 'assign',
+                        text: "What will your character's name be?", 
+                        arg: 'name',
+                        next: 'bodyType'},
 
         //appearance
-        5: {id: 'bodyType', type: 'opt', text: "Choose body type.", options: [13,14,15,16]},
-        6: {id: 'height', type: 'opt', text: "Choose height.", options: [17,18,19]},
-        7: {id: 'skinTone', type: 'opt', text: "Choose skin tone.", options: [20,21,22]},
-        8: {id: 'hairStyle', type: 'opt', text: "Choose hair style.", options: [23,24,25,26,27,28,29,30]},
-        9: {id: 'facialHairStyle', type: 'opt', text: "Choose facial hair style.", options: [31,32,33,34,35,36]},
-        10: {id: 'hairColor', type: 'opt', text: "Choose hair color.", options: [37,38,39,40,41]},
-        11: {id: 'eyeColor', type: 'opt', text: "Choose eye color.", options: [42,43,44,45,46,47,48]}
-    }
+        bodyType: {type: 'opt',
+                   text: "Choose body type.",
+                   options: [{text: "Fat", next: 'height'},
+                             {text: "Muscular", next: 'height'},
+                             {text: "Thin", next: 'height'},
+                             {text: "Average", next: 'height'}]},
 
-let optMap = {
+        height: {type: 'opt', 
+                 text: "Choose height.",
+                 options: [{text: "Tall", next: 'skinTone'},
+                           {text: "Short", next: 'skinTone'},
+                           {text: "average", next: 'skinTone'}]},
 
-        //intro menu
-        1: {id: 'choose', text: "Choose.", next: 2},
-        2: {id: 'create', text: "Create.", next: 3},
+        skinTone: {type: 'opt',
+                   text: "Choose skin tone.", 
+                   options: [{text: "Tan", next: 'hairStyle'},
+                             {text: "Dark", next: 'hairStyle'},
+                             {text: "Fair", next: 'hairStyle'},
+                             {text: "Pale", next: 'hairStyle'}]},
 
-        //ancestries
-        3: {id: 'human', text: "Human", next: 4},
-        4: {id: 'dwarf', text: "Dwarf", next: 4},
-        5: {id: 'elf', text: "Elf", next: 4},
-        6: {id: 'half-giant', text: "Half-giant", next: 4},
-        7: {id: 'gnome', text: "Gnome", next: 4},
-        8: {id: 'ogre', text: "Ogre", next: 4},
-        9: {id: 'orc', text: "Orc", next: 4},
-        10: {id: 'troll', text: "Troll", next: 4},
-        11: {id: 'goblin', text: "Goblin", next: 4},
-        12: {id: 'forsaken', text: "Forsaken", next: 4},
+        hairStyle: {type: 'opt', 
+                    text: "Choose hair style.", 
+                    options: [{text: "Long", next: 'facialHairStyle'},
+                              {text: "Short", next: 'facialHairStyle'},
+                              {text: "Mohawk", next: 'facialHairStyle'},
+                              {text: "Bald", next: 'facialHairStyle'},
+                              {text: "Shaved", next: 'facialHairStyle'},
+                              {text: "Mullet", next: 'facialHairStyle'},
+                              {text: "Spiked", next: 'facialHairStyle'},
+                              {text: "Braided", next: 'facialHairStyle'}]},
 
-        //appearance
+        facialHairStyle: {type: 'opt', 
+                          text: "Choose facial hair style.", 
+                          options: [{text: "Long beard", next: 'hairColor'},
+                                    {text: "Short beard", next: 'hairColor'},
+                                    {text: "Clean shaven", next: 'hairColor'},
+                                    {text: "Mustache", next: 'hairColor'},
+                                    {text: "Soul patch", next: 'hairColor'},
+                                    {text: "Mutton chops", next: 'hairColor'},
+                                    {text: "Goatee", next: 'hairColor'}]},
 
-        13: {id: 'fat', text: "fat", next: 6},
-        14: {id: 'muscular', text: "muscular", next: 6},
-        15: {id: 'thin', text: "thin", next: 6},
-        16: {id: 'average', text: "average", next: 6},
+        hairColor: {type: 'opt',
+                    text: "Choose hair color.", 
+                    options: [{text: "Black", next: 'eyeColor'},
+                              {text: "Brown", next: 'eyeColor'},
+                              {text: "Blonde", next: 'eyeColor'},
+                              {text: "Red", next: 'eyeColor'},
+                              {text: "Grey", next: 'eyeColor'}]},
 
-        //height
-        17: {id: 'tall', text: "tall", next: 7},
-        18: {id: 'short', text: "short", next: 7},
-        19: {id: 'average', text: "average", next: 7},
-
-        //skin tone
-        20: {id: 'tan', text: "tan", next: 8},
-        21: {id: 'dark', text: "dark", next: 8},
-        22: {id: 'pale', text: "pale", next: 8},
-
-        //hair style
-        23: {id: 'long', text: "long", next: 9},
-        24: {id: 'short', text: "short", next: 9},
-        25: {id: 'mohawk', text: "mohawk", next: 9},
-        26: {id: 'bald', text: "bald", next: 9},
-        27: {id: 'shaved', text: "shaved", next: 9},
-        28: {id: 'mullet', text: "mullet", next: 9},
-        29: {id: 'spiked', text: "spiked", next: 9},
-        30: {id: 'braided', text: "braided", next: 9},
-
-        //facial hair style
-        31: {id: 'long beard', text: "long beard", next: 10},
-        32: {id: 'short beard', text: "short beard", next: 10},
-        33: {id: 'clean shaven', text: "clean shaven", next: 10},
-        34: {id: 'mustache', text: "mustache", next: 10},
-        35: {id: 'soul patch', text: "soul patch", next: 10},
-        33: {id: 'mutton chops', text: "mutton chops", next: 10},
-        36: {id: 'goatee', text: "goatee", next: 10},
-
-        //hair color
-        37: {id: 'black', text: "black", next: 11},
-        38: {id: 'brown', text: "brown", next: 11},
-        39: {id: 'blonde', text: "blonde", next: 11},
-        40: {id: 'red', text: "red", next: 11},
-        41: {id: 'grey', text: "grey", next: 11},
-
-        //eye color
-        42: {id: 'black', text: "black", next: 11},
-        43: {id: 'brown', text: "brown", next: 11},
-        44: {id: 'red', text: "red", next: 11},
-        45: {id: 'blue', text: "blue", next: 11},
-        46: {id: 'green', text: "green", next: 11},
-        47: {id: 'yellow', text: "yellow", next: 11},
-        48: {id: 'white', text: "white", next: 11}
-    }
-        
-let funcMap = {
-
-    }
-
-let assignMap = {
-    
+        eyeColor: {type: 'opt', 
+                   text: "Choose eye color.", 
+                   options: [{text: "Black", next: 'createOrChoose'},
+                             {text: "Brown", next: 'createOrChoose'},
+                             {text: "Red", next: 'createOrChoose'},
+                             {text: "Blue", next: 'createOrChoose'},
+                             {text: "Green", next: 'createOrChoose'},
+                             {text: "Yellow", next: 'createOrChoose' },
+                             {text: "White", next: 'createOrChoose'}]}
 }
 
 let character = {
-    
     name: "default",
     ancestry: "default"
-
 }
 
 // prints current input state text and options if any
 
-let stCur = stateMap['1']
-
+let stCur = stateMap['createOrChoose']
 function printSt() { 
-
     eleOutput.innerHTML += `${stCur.text}<br>`
 
     if (stCur.type === 'opt') {
-
         let i = 1
 
         for (x in stCur.options) {
-
-            eleOutput.innerHTML += `<br>${i}. ${optMap[stCur.options[x]].text}`
-
+            eleOutput.innerHTML += `<br>${i}. ${stCur.options[x].text}`
             i++
-
         }
 
         eleOutput.innerHTML += "<br>"
-
 }
 
     eleOutput.innerHTML += "<br>"
-
     eleOutput.scrollTop = eleOutput.scrollHeight
-
 }
 
 function assign(para1) {
-
     para1 = userInput
-
 }
 
 function validate(para1) {
-
     if (para1 === userInput) {
-
         return true
-
     }
 
     return false
-
 }
 
 //clears input field on enter key/assigns input/converts input
 
 let userInput
-
 eleInput.addEventListener('keyup', (event) => {
 
     if (event.key === 'Enter' & eleInput.value != '') {
-
         userInput = eleInput.value
-
         eleInput.value = ""
 
         if (! isNaN(userInput)) {
-
             userInput = parseInt(userInput)
-
         }
         
         //checks if the current input state is an options, string, or int type
@@ -500,37 +441,26 @@ eleInput.addEventListener('keyup', (event) => {
         switch (stCur.type) {
 
             case 'opt':
-
-                let optChoice = optMap[stCur['options'][userInput-1]]
+                let optChoice = stCur['options'][userInput-1]
 
                 if (isNaN(userInput)) {
-
                     break
-
                 }
 
                 if (optChoice.func) {
-
                     funcMap[optChoice.func]()
-
                 }
 
                 stCur = stateMap[optChoice.next]
-
                 printSt()
-
                 break
 
             case 'assign':
 
                 assign(stCur.arg)
-
                 stCur = stateMap[stCur.next]
-
                 console.log(character['ancestry'])
-
                 printSt()
-
                 break
             
             case 'validate':
@@ -538,165 +468,38 @@ eleInput.addEventListener('keyup', (event) => {
                 if (isNaN(userInput)) {
 
                     if (funcMap[stCur.func]() === true) {
-
                         stCur = stateMap[stCur.next]
-
                         printSt()
-
                         break
-
                     }
 
                 break
-
                 }
         }
     }
 })
 
-let myGamePiece = new component(24, 24, "red", 0, 0)
-
-let canvasFloor = document.getElementById("canvasFloor")
-    canvasFloor.width = 120
-    canvasFloor.height = 120
-
-let canvasObjects = document.getElementById("canvasObjects")
-    canvasObjects.width = 120
-    canvasObjects.height = 120
-
-let canvasPlayer = document.getElementById("canvasPlayer")
-    canvasPlayer.width = 120
-    canvasPlayer.height = 120
-
-let contextFloor = canvasFloor.getContext("2d"),
-    contextObjects = canvasObjects.getContext("2d"),
-    contextPlayer = canvasPlayer.getContext("2d")
-
-function component(width, height, color, x, y) {
-    this.width = width
-    this.height = height
-    this.color = color
-    this.x = x
-    this.y = y
-}
-
-function updatePlayer() {
-    contextPlayer.clearRect(0, 0, canvasPlayer.width, canvasPlayer.height)
-    contextPlayer.fillStyle = myGamePiece.color
-    contextPlayer.fillRect(myGamePiece.x, myGamePiece.y, myGamePiece.width, myGamePiece.height)
-}
-
-let mapFloorArray = [1,0,0,0,0,
-                     0,1,0,0,0,
-                     0,0,1,0,0,
-                     0,1,0,0,0,
-                     0,1,1,1,1],
-
-    mapObjectsArray = [1,0,0,0,0,
-                       0,1,0,0,0,
-                       0,0,2,0,0,
-                       0,1,0,0,0,
-                       0,1,1,2,1],
-    
-    mapPlayerArray = [0,0,0,0,0,
-                      0,0,0,0,0,
-                      0,0,3,0,0,
-                      0,0,0,0,0,
-                      0,0,0,0,0]
-                    
-
-let mapData = {size: 25, width: 5, height: 5, tileWidth: 24, tileHeight: 24},
-    xCoord = 0,
-    yCoord = 0,
-    tileIndex = 0
-
-for (e in mapFloorArray) {
-    tileIndex += 1
-
-    if (mapFloorArray[e] == 1) {
-        contextFloor.fillStyle = "grey"
-        contextFloor.fillRect(xCoord, yCoord, 24, 24)
-    }
-
-    if (tileIndex == mapData['width']) {
-        tileIndex = 0
-        xCoord = 0
-        yCoord += 24
-        continue
-    }
-
-    xCoord += 24
-}
-
-xCoord = 0,
-yCoord = 0,
-tileIndex = 0
-
-for (e in mapObjectsArray) {
-    tileIndex += 1
-
-    if (mapObjectsArray[e] == 2) {
-        contextObjects.fillStyle = "blue"
-        contextObjects.fillRect(xCoord, yCoord, 24, 24)
-    }
-
-    if (tileIndex == mapData['width']) {
-        tileIndex = 0
-        xCoord = 0
-        yCoord += 24
-        continue
-    }
-
-    xCoord += 24
-}
-
-xCoord = 0,
-yCoord = 0,
-tileIndex = 0
-
-for (e in mapPlayerArray) {
-    tileIndex += 1
-
-    if (mapPlayerArray[e] == 3) {
-        myGamePiece.x = xCoord
-        myGamePiece.y = yCoord
-        contextPlayer.fillStyle = "blue"
-        contextPlayer.fillRect(xCoord, yCoord, 24, 24)
-    }
-
-    if (tileIndex == mapData['width']) {
-        tileIndex = 0
-        xCoord = 0
-        yCoord += 24
-        continue
-    }
-
-    xCoord += 24
-}
-
-let interval = setInterval(updatePlayer, 200)
-
 function moveNorth() {
     if (myGamePiece.y > 0) {
-        myGamePiece.y -= 24
+        myGamePiece.y -= 1
     }
 }
 
 function moveEast() {
-    if (myGamePiece.x < 96) {
-        myGamePiece.x += 24
+    if (myGamePiece.x < 25) {
+        myGamePiece.x += 1
     }
 }
 
 function moveSouth() {
-    if (myGamePiece.y < 96) {
-        myGamePiece.y += 24
+    if (myGamePiece.y < 25) {
+        myGamePiece.y += 1
     }
 }
 
 function moveWest() {
     if (myGamePiece.x > 0) {
-        myGamePiece.x -= 24
+        myGamePiece.x -= 1
     }
 }
 
