@@ -65,6 +65,12 @@
     outline: none;
 }
 
+#contThemeChanger {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
 .contColumn {
     display: flex;
     flex-direction: column;
@@ -279,6 +285,15 @@
 
 <input id="input" type="text">
 
+<div id="contThemeChanger">Theme:
+    <select name="themeChanger" id="themeChanger" style="background: rgb(33, 33, 33);">
+        <option value="matrix">matrix</option>
+        <option value="ocean">ocean</option>
+        <option value="yinyang">yinyang</option>
+        <option value="parchment">parchment</option>
+    </select>
+</div>
+
 </div>
 
 <script>
@@ -292,10 +307,11 @@ int: integer
 ele: element
 */
 
-// options, states, variables data map, element references
+//options, states, variables data map, element references
 
 const eleOutput = document.getElementById('output'),
       eleInput = document.getElementById('input')
+      eleTheme = document.getElementById('themeChanger')
 
 let stateMap = {
 
@@ -335,7 +351,7 @@ let stateMap = {
                  text: "Choose height.",
                  options: [{text: "Tall", next: 'skinTone'},
                            {text: "Short", next: 'skinTone'},
-                           {text: "average", next: 'skinTone'}]},
+                           {text: "Average", next: 'skinTone'}]},
 
         skinTone: {type: 'opt',
                    text: "Choose skin tone.", 
@@ -389,7 +405,7 @@ let character = {
     ancestry: "default"
 }
 
-// prints current input state text and options if any
+//prints current input state text and options if any
 
 let stCur = stateMap['createOrChoose']
 function printSt() { 
@@ -422,7 +438,7 @@ function validate(para1) {
     return false
 }
 
-//clears input field on enter key/assigns input/converts input
+//user input for commands
 
 let userInput
 eleInput.addEventListener('keyup', (event) => {
@@ -479,6 +495,8 @@ eleInput.addEventListener('keyup', (event) => {
     }
 })
 
+//player movement
+
 function moveNorth() {
     if (myGamePiece.y > 0) {
         myGamePiece.y -= 1
@@ -503,6 +521,8 @@ function moveWest() {
     }
 }
 
+//movement key detection
+
 document.addEventListener('keyup', function(event) {
 
     if (event.keyCode == 38) {
@@ -519,6 +539,63 @@ document.addEventListener('keyup', function(event) {
 
     else if (event.keyCode == 37) {
         moveWest()
+    }
+})
+
+//changes the color theme for the whole UI
+
+let elementList
+eleTheme.addEventListener('change', (event) => {
+
+    switch (event.target.value) {
+
+        case 'matrix': 
+        
+            document.getElementById('main').style.backgroundImage = 'linear-gradient(rgb(112, 112, 112), rgb(17, 17, 17))'
+            document.getElementById('themeChanger').style.backgroundColor = 'rgb(33, 33, 33)'
+            elementList = document.querySelectorAll('*')
+
+            elementList.forEach( ele => {
+                ele.style.color = 'rgb(0, 255, 0)'
+            })
+
+            break
+
+        case 'ocean': 
+            
+            document.getElementById('main').style.backgroundImage = 'linear-gradient(rgb(0, 2, 69), rgb(0, 0, 0))'
+            document.getElementById('themeChanger').style.backgroundColor = 'rgb(0, 2, 69)'
+            elementList = document.querySelectorAll('*')
+
+            elementList.forEach( ele => {
+                ele.style.color = 'rgb(50, 255, 255)'
+            })
+
+            break
+
+        case 'yinyang':
+            
+            document.getElementById('main').style.backgroundImage = 'linear-gradient(rgb(0, 0, 0), rgb(150, 150, 150)'
+            document.getElementById('themeChanger').style.backgroundColor = 'rgb(0, 0, 0)'
+            elementList = document.querySelectorAll('*')
+
+            elementList.forEach( ele => {
+                ele.style.color = 'rgb(255, 255, 255)'
+            })
+
+            break
+
+        case 'parchment':
+            
+            document.getElementById('main').style.backgroundImage = 'linear-gradient(rgb(145, 124, 93), rgb(145, 124, 93)'
+            document.getElementById('themeChanger').style.backgroundColor = 'rgb(145, 124, 93)'
+            elementList = document.querySelectorAll('*')
+
+            elementList.forEach( ele => {
+                ele.style.color = 'rgb(0, 0, 0)'
+            })
+
+            break
     }
 })
 
